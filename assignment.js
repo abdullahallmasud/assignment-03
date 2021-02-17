@@ -1,37 +1,37 @@
 
 //problem: 01
-function kiloToMeter(kiloDistance){
+function kilometerToMeter(kiloDistance){
     if(kiloDistance < 0){
-        return "distance cannot be negative"; //extra code
+        return "distance cannot be negative"; //bonus case (for negetive input)
     }
     else{
         var meterDistance = kiloDistance * 1000;
         return meterDistance;
     } 
 }
-var result = kiloToMeter(-5); //calling function with the user input(-5) value as an example of execution of the code
+var result = kilometerToMeter(); 
 console.log(result);
 
 //problem: 02
 function budgetCalculator(watch, mobile, laptop){
     var totalCost = watch * 50 + mobile * 100 + laptop * 500;
     if(watch + mobile + laptop > 10){
-        return totalCost - 100; // bonus features(discount price) 
+        return totalCost - 100; // bonus case (discount price (100 taka) for 10+ products order) 
     }
     else{
         return totalCost;
     }
 }
-var finalBudget = budgetCalculator(4, 8, 3); //calling function with the user input(4, 8, 2) value as an example of execution of the code
+var finalBudget = budgetCalculator(); 
 console.log(finalBudget);
 
 //problem: 03
-function hotelcost(dayCount){
+function hotelCost(dayCount){
     if(dayCount == 0){
-        hotelFare = "No Vacancy"; //Extra bonus case 
+        var hotelFare = "No Vacancy"; //Extra bonus case 
     }
-    if(dayCount <= 10){
-        var hotelFare = dayCount * 100;
+    else if(dayCount <= 10){
+        hotelFare = dayCount * 100;
     }
     else if(dayCount <= 20){
         var firstTenDays = 10 * 100;
@@ -48,19 +48,28 @@ function hotelcost(dayCount){
     }
     return hotelFare;
 }
-var finalCharge = hotelcost(43); //calling function with the user input(43) value as an example of execution of the code
+var finalCharge = hotelCost(); 
 console.log(finalCharge);
 
 //problem: 04
 function megaFriend(friends){
     var longestWord = "";
-    friends.forEach(function(maxFriendFinder) {
-        if(maxFriendFinder.length > longestWord.length) {
-          longestWord = maxFriendFinder;
+    if(friends == ""){
+        return "NO array is called by function"; //bonus case if blankArray is called then it will return a string
+    }
+    else{
+        for (let i = 0; i < friends.length; i++) {
+            const element = friends[i];
+           
+            if(element.length > longestWord.length){
+                longestWord = element;
+            } 
         }
-      });
+    }
+    
     return longestWord; 
 }
-
-var maxFriendFinder = megaFriend(["Rokibul", "Dipto", "Sohan", "Ibrahim", "Tomal", "Raihan", "Sakib", "Enamul"]);
-console.log(maxFriendFinder);
+var frindslist = ["Dipto", "Sohan", "Ibrahim", "Tomal", "Raihan","Rokibul",  "Sakib", "Enamul"];
+var blankArray = []; //bonus case blank array
+var longestFriendsName = megaFriend(blankArray);
+console.log(longestFriendsName);
